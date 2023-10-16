@@ -27,7 +27,7 @@ cd config
 
 sudo DEBIAN_FRONTEND="noninteractive" apt -y --assume-yes install git
 
-## Wget the github code
+## Clone the github repository
 
 git clone https://github.com/michaelcalvinwood/fastcoref-rest-endpoint.git
 cd fastcoref-rest-endpoint
