@@ -21,9 +21,9 @@ else
   exit
 fi
 
-
 # Install and Configure nginx
-sudo apt update
+sudo DEBIAN_FRONTEND="noninteractive" apt -y --assume-yes update
+sudo DEBIAN_FRONTEND="noninteractive" apt -y --assume-yes upgrade
 sudo DEBIAN_FRONTEND="noninteractive" apt install -y --assume-yes nginx libnginx-mod-http-headers-more-filter
 sudo ufw app list
 sudo ufw allow 'Nginx HTTP'
@@ -125,6 +125,8 @@ apt DEBIAN_FRONTEND="noninteractive" install -y --assume-yes net-tools
 # Enable the firewall
 ufw allow 22/tcp
 sudo ufw --force enable
+
+#
 
 
 
