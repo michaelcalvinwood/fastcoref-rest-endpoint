@@ -21,6 +21,7 @@ ssh root@{hostname}
 ## Make a config directory
 
 mkdir config
+
 cd config
 
 ## Install git
@@ -30,15 +31,19 @@ sudo DEBIAN_FRONTEND="noninteractive" apt -y --assume-yes install git
 ## Clone the github repository
 
 git clone https://github.com/michaelcalvinwood/fastcoref-rest-endpoint.git
+
 cd fastcoref-rest-endpoint
 
 ## Modify the python file if you want to change the host or port
 If you want the REST Endpoint to be a localhost service, edit fastcoref_rest_endpoint.py (replace 0.0.0.0 with 127.0.0.1).
+
 If you want the REST Endpoint to run on a different port, edit fastcoref_rest_endpoint.py (replace 5005 with the desired port number). Then, in the terminal, execute the following command: ufw allow {port}/tcp
 
 ## Run the setup scripts
 chmod +x *.sh
+
 ./setup-linux.sh {hostname} {databasePassword} {emailAddress}
+
 ./install-fastcoref.sh
 
 
