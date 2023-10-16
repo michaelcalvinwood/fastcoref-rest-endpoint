@@ -120,14 +120,32 @@ sudo certbot --nginx -d $Domain --non-interactive --agree-tos -m $EmailAddress
 #https://scalegrid.io/blog/calculating-innodb-buffer-pool-size-for-your-mysql-server/
 
 # Install network tools
-apt DEBIAN_FRONTEND="noninteractive" install -y --assume-yes net-tools
+sudo DEBIAN_FRONTEND="noninteractive" apt install -y --assume-yes net-tools
 
 # Enable the firewall
 ufw allow 22/tcp
 sudo ufw --force enable
 
-#
+# install nodejs
+sudo apt-get update
+sudo DEBIAN_FRONTEND="noninteractive" apt-get install -y --assume-yes ca-certificates curl gnupg
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+# NODE_MAJOR=20
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+sudo apt-get update
+sudo DEBIAN_FRONTEND="noninteractive" apt-get install nodejs -y --assume-yes
 
+# install pm2
+npm i pm2 -g -y
+
+npm install -g -y npm@10.2.0
+
+# install venv
+sudo DEBIAN_FRONTEND="noninteractive" apt -y --assume-yes update
+sudo DEBIAN_FRONTEND="noninteractive" apt -y --assume-yes upgrade
+DEBIAN_FRONTEND="noninteractive" apt -y --assume-yes install python3-pip
+DEBIAN_FRONTEND="noninteractive" apt -y --assume-yes install python3-venv
 
 
 
